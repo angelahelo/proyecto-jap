@@ -7,19 +7,20 @@ fetch(productos)
 
 
         for (let products of datos.products) {
-            let lista =`
+            let lista = `
             <div class="list-group-item list-group-item-action">
-                <div class="fila">
-                    <div class="imagen">
+                <div class="row">
+                    <div class="col-3">
                         <img src="` + products.image + `" alt="product image" class="img-thumbnail">
                     </div>
-                    <div class= "col-3">
-                        <div class= "productos">
-                            <h4>` + products.name + "-" + products.currency +  + products.cost + ` </h4>
+                    <div class= "col">
+                        <div class= "d-flex w-100 justify-content-between">
+                            <div class="mb-1">
+                            <h4>` + products.name + "-" + products.currency + + products.cost + ` </h4>
                             <p> ` + products.description + `</p>
-
+                            </div>
                         </div>
-                        <small class="text-muted"> ` +products.soldCount + ` artículos</small>
+                        <small class="text-muted"> ` + products.soldCount + ` artículos</small>
                     </div>
                 </div>
 

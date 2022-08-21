@@ -16,19 +16,25 @@
   </style>
 </head>
 
-<body>
+<body class="text-center">
   <!-- deje el main porque tome como referencia el login sugerido, inspeccione, y le cambie el nombre a class-->
-  <main class="signin"> 
+  <main class="form-signin"> 
     <div class="container">
-      <div> <img src="img/login.png"></div>
-      <h1>Iniciar Sesión</h1>
-      <div>
-        <p>Correo</p>
-        <p><input type="email" name="email" id="email" size="40"></p>
+      <div> 
+        <img clas="mb-4" src="img/login.png" alt width="400" height="170" >
       </div>
-      <div>
+      <h1>Iniciar Sesión</h1>
+      <div class="form-floating">
+        <p>Correo</p>
+        <p>
+          <input type="email" name="email" id="email" size="30" placeholder="ej. mercado@e_commerce.com">        
+        </p>
+      </div>
+      <div class="form-floating">
         <p>Contraseña</p>
-        <p><input type="password" name="password" id= "password" minlength="6"></p>
+        <p>
+          <input type="password" name="password" id= "password" minlength="12" placeholder="contraseña">
+        </p>
       </div>
       <div>
         <p>

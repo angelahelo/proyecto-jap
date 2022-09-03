@@ -1,4 +1,9 @@
-const productos = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+//let url_product = "https://japceibal.github.io/emercado-api/cats_products" +"_"+ "setCatID"
+//console.log(url_product); 
+// estoy probando la url.... se que es string que tengo que unir... pero necesito un json para usar el fecth.... 
+
+
+const productos = "https://japceibal.github.io/emercado-api/cats_products/101.json"; 
 
 fetch(productos)
     .then(respuesta => respuesta.json())

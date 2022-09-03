@@ -39,3 +39,20 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+/*funcion para obtener nombre usuario*/
+
+function getUsuario () {
+  localStorage.getItem("usuario");
+}
+
+/* funcion para poner nombre en la barra */
+
+document.addEventListener("DOMContentLoaded", function(){     /* Cuando carga la pag se da el evento*/
+  nombreUsuario = localStorage.getItem("usuario");              /* obtengo el dato del usuario*/
+  if (nombreUsuario){                                 
+    document.getElementById("usuario").innerHTML += nombreUsuario;    
+  }
+})
+
+

@@ -1,11 +1,35 @@
-//let url_product = "https://japceibal.github.io/emercado-api/cats_products" +"_"+ "setCatID"
-//console.log(url_product); 
-// estoy probando la url.... se que es string que tengo que unir... pero necesito un json para usar el fecth.... 
 
 
-const productos = "https://japceibal.github.io/emercado-api/cats_products/101.json"; 
+const urlCatProd = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
 
-fetch(productos)
+
+let getJSONDataA = function(urlCatProd){
+    let result = {};
+    showSpinner();
+    return fetch(urlCatProd)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }else{
+        throw Error(response.statusText);
+      }
+    })
+    .then(function(response) {
+          result.status = 'ok';
+          result.data = response;
+          hideSpinner();
+          return result;
+    })
+    .catch(function(error) {
+        result.status = 'error';
+        result.data = error;
+        hideSpinner();
+        return result;
+    });
+}
+
+
+fetch(urlCatProd)
     .then(respuesta => respuesta.json())
 
     .then(datos => {

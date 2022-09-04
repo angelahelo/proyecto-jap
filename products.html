@@ -41,7 +41,41 @@
     <div class="text-center p-4">
       <h2>PRODUCTOS</h2>
       <h3 id="catName">Verás todos los productos de la categoria </h3> <!--saque la palabra Autos porque quedaba en todas las categorias-->
-
+<!-- tome el curpo de categories para poner los filtros-->
+<div class="container">
+  <div class="row">
+    <div class="col text-end">
+      <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+        <input type="radio" class="btn-check" name="options" id="asc">
+        <label class="btn btn-light" for="asc">$ ↑</label>
+        <input type="radio" class="btn-check" name="options" id="desc">
+        <label class="btn btn-light" for="desc">$ ↓</label>
+        <input type="radio" class="btn-check" name="options" id="count" checked>
+        <label class="btn btn-light" for="count"><i class="fas fa-sort-amount-down mr-1"></i></label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+      <div class="row container p-0 m-0">
+        <div class="col">
+          <p class="font-weight-normal text-end my-2">Precio</p>
+        </div>
+        <div class="col">
+          <input class="form-control" type="number" placeholder="min." id="filterMin">
+        </div>
+        <div class="col">
+          <input class="form-control" type="number" placeholder="máx." id="filterMax">
+        </div>
+        <div class="col-3 p-0">
+          <div class="btn-group" role="group">
+            <button class="btn btn-light btn-block" id="filter">Filtrar</button>
+            <button class="btn btn-link btn-sm" id="clearFilter">Limpiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
     <div class="container">
       <div class="row">

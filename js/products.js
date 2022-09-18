@@ -1,7 +1,7 @@
 
 const urlCatProd = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE; // concatene los valores - nueva url-
 
-const urlProdInfo = PRODUCT_INFO_URL + localStorage.getItem("setProdInfo") + EXT_TYPE; // nueva url para mostrar info prod
+
 
 
 
@@ -11,37 +11,49 @@ let max = undefined;
 
 
 
-
+function setProdInfo(id){
+    localStorage.setItem("prodID",id);
+    window.location = "product-info.html"
+}
 
 
 function showProducts(){
-    document.getElementById("products").innerHTML = "";
-    for (let products of lista.products) {
 
-               
-        products.cost= parseInt(products.cost);
-        //console.log(parseInt(products.cost));
-        if ((products.cost>= min && products.cost<= max) || (max == undefined && min == undefined)) {
-        // RECORRER EN FORMA DE INDICE...
+    document.getElementById("products").innerHTML = "";
+
+    let p = lista.products;
+
+    for (let i= 0; i< p.length; i ++) {
+
+        // RECORRER EN FORMA DE INDICE... me parecio mejor opcion
+       
+        p.cost= parseInt(p.cost);
+
+        if ((p.cost>= min && p.cost<= max) || (max == undefined && min == undefined)) {
+        
+            //puse un onclick llamando a la funcion setProdInfo(id =${p[i].id} -> tome como referencia category, 
+            
         let li = `                                           
+        <div onclick="setProdInfo(${p[i].id})" class="list-group-item list-group-item-action cursor-active">
         <div class="list-group-item list-group-item-action"> 
-            <div class= ""container>
+            <div class= "container">
         <div class="row">
                 <div>
-                <button type="button" id="redProInfo"> 
+                
                 <div class="col-3">
-                    <img src="` + products.image + `" alt="product image" class="img-thumbnail">
+                    <img src= ${p[i].image} alt="product image" class="img-thumbnail">
                 </div>
-                <div class= "col">
+                <div class= "col"> 
                     <div class= "d-flex w-100 justify-content-between">
-                        <div class="mb-1">
-                        <h4>` + products.name + "-" + products.currency + + products.cost + ` </h4>
-                        <p> ` + products.description + `</p>
+                        <div class="mb-1"> 
+                        <h4> ${p[i].name} "-" ${p[i].currency} ${p[i].cost} </h4>
+                        <p> ${p[i].description} </p> 
                         </div>
-                    </div>
-                    <small class="text-muted"> ` + products.soldCount + ` artículos</small>
+                    </div> 
+                    <small class="text-muted"> ${p[i].soldCount} artículos</small>
                 </div>
                 </div>
+            </div>
             </div>
             </div>
             </div>
@@ -49,13 +61,9 @@ function showProducts(){
             document.getElementById("products").innerHTML += li;
 
             
-        } 
+        } ;
 
-        let prodInfoId = + products.id
-        localStorage.setItem("setProdInfo", prodInfoId);
-
-
-            
+              
 }
  // si pongo .catch(error => alert("Se produjo un error:" + error)) me da error en JS ??
 }
@@ -140,19 +148,11 @@ document.addEventListener("DOMContentLoaded", function (e) { // aca accedo a los
 
         })
 
-        document.getElementById("redProInfo").addEventListener("click", function(){
-            
-
-        })
-
-        document.getElementById("redProInfo").addEventListener("click", function (){
-            window.location.href = "product-info.html"
-        })
-    
+       
+      
 })})
 
 
 
 
 
-// me hace el filtro pero agrega a la lista no me borra la lista anterior

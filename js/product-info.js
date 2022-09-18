@@ -38,9 +38,12 @@ function showProductInfo() {
 
              <div class="col">
              <div><img class="bd-placeholder-img card-img-top" src="${prodInfo.images[3]}"></div>
-             </div>
 
              <br></br>
+             </div>
+
+             
+             
              <p><strong>Comentarios</strong></p>
 
         </div>
@@ -87,13 +90,15 @@ function showProductComent(){
 
     for (let i = 0; i < pc.length; i++) {
         let li = `
-        <div class= "row">
+        <div class= "container"
+        <div class= "row align-items-start">
         
         <div>
         <p><strong>${pc[i].user}- </strong> ${pc[i].dateTime} - ${pc[i].score}</p>
         <p>${pc[i].description}</p>
         </div>
 
+        </div>
         </div>
         `
         document.getElementById("pComent").innerHTML += li

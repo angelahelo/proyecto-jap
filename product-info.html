@@ -31,7 +31,8 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="my-profile.html" id="usuario"></a> <!--agregue id y href-->
+            <a class="nav-link" href="my-profile.html" id="usuario"></a>
+            <!--agregue id y href-->
           </li>
         </ul>
       </div>
@@ -41,13 +42,49 @@
     <div class="container">
       <div class="row">
         <div class="list-products-info" id="pInfo">
+          <!-- Agregue id, para poner Info prod con  DOM-->
 
         </div>
         <div class="list-products-info" id="pComent">
+          <!-- Agregue id, para poner los comentarios de prod con  DOM-->
 
         </div>
+        <div class="list-products-info" id="pMiComent">
+          <!--Agregar 3.4 comentrios boton etc-->
+          <div class="container">
+            <div class="row">
+
+              <div class="mb-3">
+                <label for="tuOpinion" class="form-label"><strong>Nos gustaría saber tu
+                    opinión...</strong></label>
+                <textarea class="form-control" id="tuOpinion" rows="3"></textarea>
+              </div>
+              <div class="col-sm-3">
+                <label class="visually-hidden" for="specificSizeSelect">Preference</label>
+                <select class="form-select" id="specificSizeSelect">
+                  <option selected>Puntuación</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="3">4</option>
+                  <option value="3">5</option>
+                </select>
+              </div>
+              <div class="col-sm-3">
+                <button type="button" class="btn btn-primary">Enviar</button>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
 
       </div>
+
+
+
+    </div>
     </div>
   </main>
   <footer class="text-muted">

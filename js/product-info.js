@@ -54,9 +54,6 @@ function showProductInfo() {
 
     document.getElementById("pInfo").innerHTML += info;
 
-    /// ver ejercicio alumnos con for of ... mas facil que for i ++
-
-
 
 
 };
@@ -86,15 +83,16 @@ let pc = "";
 
 function showProductComent(){
 
-   
-
     for (let i = 0; i < pc.length; i++) {
+
+        let score = parseInt(pc[i].score);
+
         let li = `
         <div class= "container"
         <div class= "row align-items-start">
         
         <div>
-        <p><strong>${pc[i].user}- </strong> ${pc[i].dateTime} - ${pc[i].score}</p>
+        <p><strong>${pc[i].user}- </strong> ${pc[i].dateTime} - ${estrellasMarcadas (score)}</p>
         <p>${pc[i].description}</p>
         </div>
 
@@ -107,6 +105,7 @@ function showProductComent(){
 
    
 };
+
 
 
 
@@ -124,3 +123,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     }
 })})
+
+
+
+
+function estrellasMarcadas (score){
+    let checkEstrella = `<span class="fa fa-star checked"></span>`;
+    let notEstrella =`<span class="fa fa-star"></span>` ;
+    
+    return checkEstrella.repeat(score) + (notEstrella.repeat(5-score))
+       
+    }
+

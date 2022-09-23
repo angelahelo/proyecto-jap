@@ -44,7 +44,7 @@ function showProductInfo() {
 
              
              
-             <p><strong>Comentarios</strong></p>
+             
 
         </div>
        
@@ -53,6 +53,37 @@ function showProductInfo() {
     `
 
     document.getElementById("pInfo").innerHTML += info;
+
+    //Agregue la informacion de productos relacionados con un for para que recorra..
+    // ver como poner las fotos al lado... no me salio...
+    
+    // FALTA CREAR EL BOTON PARA REDIRIGIR A INFO PROD DE ESE PROD.
+    let pr = prodInfo.relatedProducts;
+    
+
+    for (let i = 0; i < pr.length; i++) {
+        let lipr = `
+        
+
+            <div class = "row align-items-start">
+            <div class = "col-3">
+                <div class="card">
+                
+                <img src="${pr[i].image}" class="bd-placeholder-img card-img-top" alt="producto-relacionado">
+               
+                <div class="card-body">
+                <h5 class="card-title">${pr[i].name}</h5>
+                </div>
+                </div>
+                </div>
+                </div>
+           
+       
+        `
+        document.getElementById("pInfo").innerHTML += lipr;
+
+        console.log(pr[i].name);
+    }
 
 
 
@@ -65,23 +96,23 @@ function showProductInfo() {
 document.addEventListener("DOMContentLoaded", function (e) { // aca accedo a los datos voy por buen camino
 
     getJSONData(urlProdInfo).then(function (resultObj) {
-       
+
         if (resultObj.status === "ok") {
             prodInfo = resultObj.data;
-            
+
 
             showProductInfo(prodInfo);
-            
+
 
 
         }
     });
 
-    
+
 });
 let pc = "";
 
-function showProductComent(){
+function showProductComent() {
 
     for (let i = 0; i < pc.length; i++) {
 
@@ -92,7 +123,8 @@ function showProductComent(){
         <div class= "row align-items-start">
         
         <div>
-        <p><strong>${pc[i].user}- </strong> ${pc[i].dateTime} - ${estrellasMarcadas (score)}</p>
+        <p><strong>Comentarios</strong></p>
+        <p><strong>${pc[i].user}- </strong> ${pc[i].dateTime} - ${estrellasMarcadas(score)}</p>
         <p>${pc[i].description}</p>
         </div>
 
@@ -103,7 +135,7 @@ function showProductComent(){
 
     }
 
-   
+
 };
 
 
@@ -112,26 +144,27 @@ function showProductComent(){
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(urlProdComent).then(function (resultData) {
-    //console.log(urlProdComent);
-    if (resultData.status === "ok") {
-         pc = resultData.data;
-        
-
-       showProductComent();
-       
+        //console.log(urlProdComent);
+        if (resultData.status === "ok") {
+            pc = resultData.data;
 
 
-    }
-})})
+            showProductComent();
 
 
 
+        }
+    })
+})
 
-function estrellasMarcadas (score){
+
+
+
+function estrellasMarcadas(score) {
     let checkEstrella = `<span class="fa fa-star checked"></span>`;
-    let notEstrella =`<span class="fa fa-star"></span>` ;
-    
-    return checkEstrella.repeat(score) + (notEstrella.repeat(5-score))
-       
-    }
+    let notEstrella = `<span class="fa fa-star"></span>`;
+
+    return checkEstrella.repeat(score) + (notEstrella.repeat(5 - score))
+
+}
 

@@ -3,6 +3,11 @@ const urlProdInfo = PRODUCT_INFO_URL + localStorage.getItem("prodID") + EXT_TYPE
 const urlProdComent = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("prodID") + EXT_TYPE; // url muestro comentarios
 
 
+function setProdInfo(id){
+    localStorage.setItem("prodID",id);
+    window.location = "product-info.html"
+}
+
 function showProductInfo() {
 
     let info = `
@@ -57,7 +62,8 @@ function showProductInfo() {
     //Agregue la informacion de productos relacionados con un for para que recorra..
     // ver como poner las fotos al lado... no me salio...
     
-    // FALTA CREAR EL BOTON PARA REDIRIGIR A INFO PROD DE ESE PROD.
+    // PUSE UN ONCLICK, FUNCION SETPRODINFO... 
+    
     let pr = prodInfo.relatedProducts;
     
 
@@ -65,7 +71,7 @@ function showProductInfo() {
         let lipr = `
         
 
-            <div class = "row align-items-start">
+            <div onclick="setProdInfo(${pr[i].id})" class = "row align-items-start">
             <div class = "col-3">
                 <div class="card">
                 

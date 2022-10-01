@@ -40,7 +40,10 @@ let getJSONData = function(url){
     });
 }
 
-
+function setProdInfo(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html"
+}
 
 
 /* funcion para poner nombre en la barra */

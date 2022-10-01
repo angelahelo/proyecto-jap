@@ -11,12 +11,6 @@ let max = undefined;
 
 
 
-function setProdInfo(id){
-    localStorage.setItem("prodID",id);
-    window.location = "product-info.html"
-}
-
-
 function showProducts(){
 
     document.getElementById("products").innerHTML = "";
@@ -38,8 +32,7 @@ function showProducts(){
         <div class="list-group-item list-group-item-action"> 
             <div class= "container">
         <div class="row">
-                <div>
-                
+                                
                 <div class="col-3">
                     <img src= ${p[i].image} alt="product image" class="img-thumbnail">
                 </div>
@@ -49,8 +42,9 @@ function showProducts(){
                         <h4> ${p[i].name} "-" ${p[i].currency} ${p[i].cost} </h4>
                         <p> ${p[i].description} </p> 
                         </div>
+                        <small class="text-muted"> ${p[i].soldCount} artículos</small>
                     </div> 
-                    <small class="text-muted"> ${p[i].soldCount} artículos</small>
+                    
                 </div>
                 </div>
             </div>

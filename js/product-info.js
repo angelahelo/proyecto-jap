@@ -96,7 +96,7 @@ function showProductInfo() {
         `
         document.getElementById("pInfo").innerHTML += lipr;
 
-        console.log(pr[i].name);
+        
     }
 
 

@@ -204,13 +204,11 @@ h3{
   font-size: medium;
 }
 
-/* img{
-  max-width: 100%;
-  max-height: 100%;
+div.row#table{
+  border-bottom: 1px solid rgb(15, 14, 14); /*con esto puse la barrita de separacion*/
+  text-align: center;
+}
 
-} */
-
-/* div.container{
-  height: 400px;
-  width: 400px;
-} */
+div.row#table2{
+  text-align: center;
+}

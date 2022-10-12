@@ -36,13 +36,74 @@
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
-        </ul>
+            </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container" id="carrito">
-      
+    <div class="container">
+      <div id="carrito">
+
+      </div>
+      <div id="envio">
+        <br>
+        <h2>Tipo de envio</h2>
+        <br>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="envio1" checked>
+          <label class="form-check-label" for="envio1">
+            Premium 2 a 5 días (15%)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="envio2">
+          <label class="form-check-label" for="envio2">
+            Express 5 a 8 días (7%)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="envio3">
+          <label class="form-check-label" for="envio3">
+            Standard 12 a 15 días (5%)
+          </label>
+        </div>
+        <br>
+        <h2>Dirección de envio</h2>
+        <br>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                <div class="mb-3">
+                  <label for="calle" class="form-label">Calle</label>
+                  <input type="text" class="form-control" id="calle" placeholder="ej, Av.Brasil" size="40">
+                </div>
+              </th>
+              <th>
+                <div class="mb-3">
+                  <label for="numCalle" class="form-label">Número</label>
+                  <input type="text" class="form-control" id="numCalle" placeholder="ej, 123">
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="mb-3">
+                  <label for="esquina" class="form-label"><strong>Esquina</strong></label>
+                  <input type="text" class="form-control" id="esquina" placeholder="ej, Obligado">
+                </div>
+              </td>
+              <td></td>
+            </tr>
+
+          </tbody>
+        </table>
+
+
+      </div>
+
+
     </div>
   </main>
   <footer class="text-muted">

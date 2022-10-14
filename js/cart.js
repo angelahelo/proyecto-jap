@@ -52,11 +52,11 @@ function showCarUser (){
         
         <div class="col">
         
-        <input type="number" name="numero" id="numero">
+        <input type="number" name="numero" id="numero" min="1" value="${car.count}">
             
         </div>
         <div class="col">
-            <p>Funcion</p>
+            <p>${car.currency}Funcion</p>
         </div>
         
 
@@ -64,6 +64,9 @@ function showCarUser (){
         
     </div>
     `
+
+    //puse en el input value="${car.count}" para que me quede precargado el valor....
+    
     document.getElementById("carrito").innerHTML += liCar;
 
 

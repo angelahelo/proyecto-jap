@@ -207,6 +207,7 @@ h3{
 div.row#table{
   border-bottom: 1px solid rgb(15, 14, 14); /*con esto puse la barrita de separacion*/
   text-align: center;
+  font-weight: bold;
 }
 
 div.row#table2{
@@ -216,4 +217,7 @@ div.row#table2{
 div#carrito{
   
   border-bottom: 1px solid rgb(107, 104, 104); /*con esto puse la barrita de separacion*/ 
+}
+div#subT{
+  font-weight: bold;
 }

@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function (e) { // aca accedo a los
             showProducts(lista)
         })
         
-        document.getElementById("relCount").addEventListener("click", function(){ // no me funciona... ver
+        document.getElementById("relCount").addEventListener("click", function(){ 
             lista.products.sort(function(a,b){
                 if (parseInt(a.soldCount) > parseInt(b.soldCount)){
                     return -1;

@@ -2,13 +2,12 @@ const url_carBuy = CART_INFO_URL + "25801" + EXT_TYPE;
 
 
 
-function showCarUser (){
+function showCarUser() {
 
     let car = carUser.articles[0];
 
-    car.count = parseInt(car.count)
-    
-    let liCar =`
+
+    let liCar = `
     <div class= "container">
         <h1 class="text-center">Carrito de compras</h1>
 
@@ -52,11 +51,11 @@ function showCarUser (){
         
         <div class="col">
         
-        <input type="number" name="numero" id="numero"  value="${car.count}" onchange ="miSubTotal(this.value)">
+        <input type="number" name="numero" id="numero"  min= "1" value="1" onchange ="setCantidad(this.value)">
             
         </div>
         <div class="col">
-            <p>${car.currency}</p><p id="total"></p>
+            <p>${car.currency}</p> <p id= "prueba">${car.unitCost}</p>
         </div>
         
 
@@ -64,19 +63,37 @@ function showCarUser (){
         
     </div>
     `
-    console.log(typeof(this.value));
+    console.log(typeof (this.value));
     //puse en el input value="${car.count}" para que me quede precargado el valor....
-    
+
     document.getElementById("carrito").innerHTML += liCar;
-   // document.getElementById("total").innerHTML += miSubTotal(value); // estoy pasando una funcion y no un dom por eso da undefaining...
-    
+
+
 };
 
+function setCantidad(value) {
+    localStorage.setItem("cantidad", value);
+    window.location = "cart.html";
 
-function miSubTotal(value){ // la funcion la prueba en consola y funciona....
+}
+
+
+
+/* function showSubTotal (){
+    let subT = `
+    <div>
+    <p>${miSubTotal()}</p>
+    </div>
+    `
+    document.getElementById("total").innerHTML += subT
+} */
+
+
+/* function miSubTotal(value){ // la funcion la prueba en consola y funciona....
         
     let precio = carUser.articles[0].unitCost;
-
+    
+    
     console.log(precio);
     console.log(value)
 
@@ -85,24 +102,35 @@ function miSubTotal(value){ // la funcion la prueba en consola y funciona....
 
     
 
-}
+} */
 
 
 
-document.addEventListener("DOMContentLoaded", function(){
-    getJSONData(url_carBuy).then(function(resultObj){
+document.addEventListener("DOMContentLoaded", function () {
+    getJSONData(url_carBuy).then(function (resultObj) {
         console.log(url_carBuy);
-        if(resultObj.status === "ok"){
+        if (resultObj.status === "ok") {
             carUser = resultObj.data;
-           // console.log(carUser);
+            // console.log(carUser);
             showCarUser();
-                        
 
-        }
-    
-    
+
+
+        };
+        document.getElementById("numero").addEventListener("input", function () {
+
+            let cantidad = document.getElementById("numero").value;
+            let precio = carUser.articles[0].unitCost;
+
+
+
+            document.getElementById("prueba").innerHTML = cantidad * precio;
+        });
+        
+
+
     })
 
-    
+
 })
 

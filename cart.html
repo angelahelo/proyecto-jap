@@ -41,71 +41,243 @@
     </div>
   </nav>
   <main>
+
     <div class="container">
-      <div id="carrito">
+      <!--EMPIEZA FORM PARA LAS VALIDACIONES-->
 
+      <form id="formulario" class="needs-validation" novalidate>
+
+        <div id="carrito">
+
+        </div>
+
+
+
+        <div id="envio">
+          <br>
+          <h2>Tipo de envio</h2>
+          <br>
+          <div class="form-check input-group has-validation">
+            <input class="form-check-input" type="radio" name="tipoEnvio" id="envio1" checked required>
+            <label class="form-check-label" for="envio1">
+              Premium 2 a 5 días (15%)
+            </label>
+          </div>
+          <div class="form-check input-group has-validation">
+            <input class="form-check-input" type="radio" name="tipoEnvio" id="envio2">
+            <label class="form-check-label" for="envio2">
+              Express 5 a 8 días (7%)
+            </label>
+          </div>
+          <div class="form-check input-group has-validation">
+            <input class="form-check-input" type="radio" name="tipoEnvio" id="envio3">
+            <label class="form-check-label" for="envio3">
+              Standard 12 a 15 días (5%)
+            </label>
+          </div>
+          <br>
+          <h2>Dirección de envio</h2>
+          <br>
+          <table>
+            <!--  -->
+            <tbody>
+              <tr>
+                <th>
+                  <div class="mb-3">
+                    <label for="calle" class="form-label input-group has-validation">Calle<abbr title="required"
+                        aria-label="required">*</abbr></label>
+
+                    <input type="text" class="form-control" id="calle" placeholder="ej, Av.Brasil" size="40" required>
+                    <div class="valid-feedback">
+                      OK
+                    </div>
+                    <div class="invalid-feedback">
+                      Falta completar el campo!
+                    </div>
+
+                  </div>
+                </th>
+                <th>
+                  <div class="mb-3">
+                    <label for="numCalle" class="form-label input-group has-validation">Número<abbr title="required"
+                        aria-label="required">*</abbr></label>
+                    <input type="number" class="form-control" id="numCalle" placeholder="ej, 123" required>
+                    <div class="valid-feedback">
+                      OK
+                    </div>
+                    <div class="invalid-feedback">
+                      Falta completar el campo!
+                    </div>
+                  </div>
+                </th>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="mb-3">
+                    <label for="esquina" class="form-label input-group has-validation"><strong>Esquina</strong><abbr
+                        title="required" aria-label="required">*</abbr></label>
+                    <input type="text" class="form-control" id="esquina" placeholder="ej, Obligado" required>
+                    <div class="valid-feedback">
+                      OK
+                    </div>
+                    <div class="invalid-feedback">
+                      Falta completar el campo!
+                    </div>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <!-- TOTALES ////// FUNCIONES-->
+        <div id="totales">
+          <br>
+          <h2>Costos</h2>
+          <br>
+
+          <div class="list-group-item list-group-item-action">
+
+
+            <div class="row">
+
+              <div class="col-12 list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <div class="mb-1">
+                    <h4>Subtotal</h4>
+                    <p>Costo unitario del producto por cantidad</p>
+                  </div>
+                  <div id="subTotalGeneral"></div>
+                </div>
+              </div>
+
+              <div class="col-12 list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <div class="mb-1">
+                    <h4>Costo de envio</h4>
+                    <p>Segun el tipo de envio seleccionado</p>
+                  </div>
+                  <div id="costoEnvio"></div>
+                </div>
+              </div>
+
+              <div class="col-12 list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <div class="mb-1">
+                    <h4>Total a pagar</h4>
+                    <p>La suma de los subtotales más el costo de envio</p>
+                  </div>
+                  <div id="total"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+        <div id="formaDePago">
+          <div class="input-group has-validation">
+            <p>Debe elegir la forma de pago <abbr title="required" aria-label="required" required>*</abbr>
+              <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                id="botonPago" >
+                Seleccionar
+
+              </button>
+            </p>
+            <p id="validarModal"></p>
+
+
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Finalizar compra</button>
+          </div>
+
+        </div>
+      </form>
+
+      <!-- MODAL -->
+      <div class="modal fade needs-validation" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="formaDePago" aria-hidden="true" novalidate>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formaDePago">Forma de pago</h5>
+              
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+
+            
+              <div class="form-check ">
+                <!--Radio, para completar solo campos seleccionado-->
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="tarjetaCred" required>
+                <label class="form-check-label" for="tarjetaCred">
+                  Tarjeta de crédito
+                </label>
+                <p id="validarTarjeta"></p>
+                <tbody>
+                  <tr>
+                    <th>
+                      <div class="mb-3 ">
+                        <label for="nTarjeta" class="form-label">Número de tarjeta</label>
+                        <input type="number" id="nTarjeta" class="form-control" name="cardnumber" required>
+                        
+
+                      </div>
+                    </th>
+                    <th>
+                      <div class="mb-3">
+                        <label for="codSeguridad" class="form-label">Código de seguridad</label>
+                        <input type="number" class="form-control" id="codSeguridad" size="6" required>
+                      </div>
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="mb-3">
+                        <label for="date" class="form-label">Vencimiento MM/AA</label>
+                        <input type="month" id="date" name="expiration" required>
+                      </div>
+                    </td>
+                    <td></td>
+                  </tr>
+
+                </tbody>
+                
+              </div>
+
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="transBanco">
+                <label class="form-check-label" for="transBanco">
+                  Transferencia bancaria
+                </label>
+                <p id="validarTrans"></p>
+                <div>
+                  <label for="numCuenta" class="form-label">Número de cuenta</label>
+                  <input type="number" class="form-control" id="numCuenta" size="20" required>
+                </div>
+              </div>
+
+
+
+              <div class="modal-footer">
+                <p id="validarPago"></p>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cerrar">Cerrar</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-     
-      <div id="envio">
-        <br>
-        <h2>Tipo de envio</h2>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="tipoEnvio" id="envio1" checked>
-          <label class="form-check-label" for="envio1">
-            Premium 2 a 5 días (15%)
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="tipoEnvio" id="envio2">
-          <label class="form-check-label" for="envio2">
-            Express 5 a 8 días (7%)
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="tipoEnvio" id="envio3">
-          <label class="form-check-label" for="envio3">
-            Standard 12 a 15 días (5%)
-          </label>
-        </div>
-        <br>
-        <h2>Dirección de envio</h2>
-        <br>
-        <table>
-          <tbody>
-            <tr>
-              <th>
-                <div class="mb-3">
-                  <label for="calle" class="form-label">Calle</label>
-                  <input type="text" class="form-control" id="calle" placeholder="ej, Av.Brasil" size="40">
-                </div>
-              </th>
-              <th>
-                <div class="mb-3">
-                  <label for="numCalle" class="form-label">Número</label>
-                  <input type="text" class="form-control" id="numCalle" placeholder="ej, 123">
-                </div>
-              </th>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="mb-3">
-                  <label for="esquina" class="form-label"><strong>Esquina</strong></label>
-                  <input type="text" class="form-control" id="esquina" placeholder="ej, Obligado">
-                </div>
-              </td>
-              <td></td>
-            </tr>
-
-          </tbody>
-        </table>
 
 
-      </div>
 
-
-    </div>
   </main>
   <footer class="text-muted">
     <div class="container">

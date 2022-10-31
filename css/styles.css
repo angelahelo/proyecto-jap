@@ -221,3 +221,15 @@ div#carrito{
 div#subT{
   font-weight: bold;
 }
+p#validarModal{
+  color: red;
+  font-size: large;
+}
+p#validarPago{
+  color: red;
+  font-size: large;
+}
+p#validarTarjeta{
+  color: red;
+  font-size: large;
+}

@@ -45,6 +45,20 @@ function setProdInfo(id) {
   window.location = "product-info.html"
 }
 
+////// FUNCION DE ACCESO////// 
+
+// Si no esta logeado no puede acceder, lo puse aca asi llamo a la funcion en las paginas que no quieron que
+//accedan si no estan logeados... Lo puse en la pagina Cart (carrito) y en la pagina de mi perfil (my-profile)
+
+function acceso (){
+  if (localStorage.getItem("usuario") == undefined) {
+    alert("Para ingresar debe estar logeado");
+    window.location="index.html";
+  };
+}
+
+
+
 
 /* funcion para poner nombre en la barra */
 
@@ -53,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function(){     /* Cuando carga la
                                   
   document.getElementById("usuario").innerHTML += nombreUsuario;    
   
+  
 })
+
 
 

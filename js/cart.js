@@ -108,6 +108,9 @@ function setCantidad(value) {   // esto no hace nada... PONERLO EN EL INPUT SACA
 }  */
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    acceso (); // funcion que verifica si esta logeado, sino redirige a index
+
     getJSONData(url_carBuy).then(function (resultObj) {
         console.log(url_carBuy);
         if (resultObj.status === "ok") {
@@ -118,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         };
+
+
         document.getElementById("numero").addEventListener("input", function () {
 
             let cantidad = document.getElementById("numero").value;

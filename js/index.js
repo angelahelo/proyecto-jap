@@ -15,6 +15,14 @@ function validacion() {
 
 document.getElementById("redirigir").addEventListener("click",validacion); // en el navegador me sale con error??
 
+///ES PARA CUNADO CIERRO CESION, QUE VUELVO A INDEX.HTML, BORRE EL USUARIO/////
+
+document.addEventListener("DOMContentLoaded", function(){
+    if ("index.html") {
+        localStorage.removeItem("usuario");
+        
+      };
+})
 
 
     

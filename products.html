@@ -37,58 +37,76 @@
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
-        </ul>
+            </ul>
       </div>
     </div>
   </nav>
-  <main role="main" class="pb-5"> <!--tome como ejemplo el ejercicio 4.6-->
+  <main role="main" class="pb-5">
+    <!--tome como ejemplo el ejercicio 4.6-->
     <div class="text-center p-4">
       <h2>PRODUCTOS</h2>
-      <h3 id="catName">Verás todos los productos de la categoria </h3> <!--saque la palabra Autos porque quedaba en todas las categorias-->
-<!-- tome el curpo de categories para poner los filtros-->
-<div class="container">
-  <div class="row">
-    <div class="col text-end">
-      <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-        <input type="radio" class="btn-check" name="options" id="asc">
-        <label class="btn btn-light" for="asc">$ ↑</label>
-        <input type="radio" class="btn-check" name="options" id="desc">
-        <label class="btn btn-light" for="desc">$ ↓</label>
-        <input type="radio" class="btn-check" name="options" id="relCount" checked> <!-- nombre id y for tienen que ser  === -->
-        <label class="btn btn-light" for="relCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-      <div class="row container p-0 m-0">
-        <div class="col">
-          <p class="font-weight-normal text-end my-2">Precio</p>
+      <h3 id="catName">Verás todos los productos de la categoria </h3>
+      <!--saque la palabra Autos porque quedaba en todas las categorias-->
+      <!-- tome el curpo de categories para poner los filtros-->
+      <div class="container">
+        <div class="row">
+          <div class="col text-end">
+            <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+              <input type="radio" class="btn-check" name="options" id="asc">
+              <label class="btn btn-light" for="asc">$ ↑</label>
+              <input type="radio" class="btn-check" name="options" id="desc">
+              <label class="btn btn-light" for="desc">$ ↓</label>
+              <input type="radio" class="btn-check" name="options" id="relCount" checked>
+              <!-- nombre id y for tienen que ser  === -->
+              <label class="btn btn-light" for="relCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <input class="form-control" type="number" placeholder="min." id="filterMin">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <p class="font-weight-normal text-end my-2">Precio</p>
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="min." id="filterMin">
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="máx." id="filterMax">
+              </div>
+              <div class="col-3 p-0">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-light btn-block" id="filter">Filtrar</button>
+                  <button class="btn btn-link btn-sm" id="clearFilter">Limpiar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <input class="form-control" type="number" placeholder="máx." id="filterMax">
-        </div>
-        <div class="col-3 p-0">
-          <div class="btn-group" role="group">
-            <button class="btn btn-light btn-block" id="filter">Filtrar</button>
-            <button class="btn btn-link btn-sm" id="clearFilter">Limpiar</button>
+        <!-- AGREGUE BUSCADOR PARA DESAFIO ENTREGA 2-->
+        <div class="row">
+          <div class="col-7"></div>
+          <div class="col-5">
+            <div class="input-group rounded">
+              <input class="form-control rounded" type="search" placeholder="Búsqueda" id="btnBuscar">
+              <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+            
           </div>
         </div>
       </div>
-    </div>
-  </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="list-products" id="products">
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="list-products" id="products">
 
+          </div>
         </div>
-      </div>
 
-    </div>
+      </div>
   </main>
   <footer class="text-muted">
     <div class="container">

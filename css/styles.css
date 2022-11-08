@@ -233,3 +233,9 @@ p#validarTarjeta{
   color: red;
   font-size: large;
 }
+
+input#btnBuscar {
+  text-align: center;
+  display: flexbox;
+  margin-right: auto;
+}

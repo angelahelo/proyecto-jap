@@ -1,14 +1,8 @@
-/// FUNCION PARA PASAR EL LOCALSOTRAGE COMO VALUE
-
-function miEmail() {
-  let miEmail = localStorage.getItem("usuario");
-
-  return miEmail;
-
-
-}
+let datos = {};
 
 function showMyProfile() {
+
+  
   let miPerfil = `
 <div class="container">
       <h2>Perfil</h2>
@@ -56,22 +50,25 @@ function showMyProfile() {
       </div>
     </div>
 `
-  document.getElementById("formulario").innerHTML += miPerfil
-};
+  document.getElementById("formulario").innerHTML = miPerfil
 
-
-function showData (){
+  
 
 };
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
   acceso(); // funcion que verifica si esta logeado, sino redirige a index
 
-  showMyProfile();
+  showMyProfile(); /// Muestro todos los input vacios, salvo email
+
+  
 
 
   ///// ACA GUARDO TODOS LOS DATOS DE LOS CAMPOS//////
+  
   document.getElementById("guardar").addEventListener("click", function () { 
     let nombre = document.getElementById("nombre").value;
     let segundoNombre = document.getElementById("segundoNombre").value;
@@ -81,42 +78,26 @@ document.addEventListener("DOMContentLoaded", function () {
     let tel = document.getElementById("tel").value;
 
 
+    /// construyo un objeto con los datos como atributos ... 
+    datos = {
+      nombre : `${nombre}`,
+      segundoNombre : `${segundoNombre}`,
+      apellido : `${apellido}`,
+      segundoApellido : `${segundoApellido}`,
+      email : `${email}`,
+      tel: `${tel}`,
+    
 
-    if (nombre !== undefined) {
+    };
 
-      localStorage.setItem("nombre", nombre);
-      window.location = "my-profile.html"
+    //// paso los datos a string para guardarlos en localstorage
+    let perfil = JSON.stringify(datos);
+    localStorage.setItem("perfil", perfil);
+   
 
-    }
 
-    if (segundoNombre !== undefined) {
-      localStorage.setItem("segundoNombre", segundoNombre);
-      window.location = "my-profile.html"
-    }
-
-    if (apellido !== undefined) {
-      localStorage.setItem("apellido", apellido);
-      window.location = "my-profile.html"
-
-    }
-
-    if (segundoApellido !== undefined) {
-      localStorage.setItem("segundoApellido", segundoApellido);
-      window.location = "my-profile.html"
-    }
-
-    if (email !== undefined) {
-      localStorage.setItem("email", email);
-      window.location = "my-profile.html"
-    }
-
-    if (tel !== undefined) {
-      localStorage.setItem("tel", tel);
-      window.location = "my-profile.html"
-    }
 
   });
-
 
 
 });
@@ -129,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Funcion boostrap 5 validaciones
   var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
+  
   Array.prototype.slice.call(forms)
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -149,4 +130,69 @@ document.addEventListener("DOMContentLoaded", function () {
       }, false);
 
     })
-})()
+})();
+
+/// Muestro el perfil con los datos que guarde
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  //// obtengo los datos del local
+
+  perfil = localStorage.getItem("perfil");
+
+  /// tranformo el json que estaba en string en objto para utilizarlo
+  let misDatos = JSON.parse(perfil);
+  console.log(misDatos);
+
+  console.log(perfil);
+  console.log(misDatos);
+
+  let perfilCompleto =`
+  <div class="container">
+      <h2>Perfil</h2>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col">
+          <label for="nombre" class="form-label">Nombre<abbr title="required"
+            aria-label="required">*</abbr></label>
+          <input type="text" class="form-control" id="nombre" value="${misDatos.nombre}" aria-label="Nombre" required>
+          <div class="invalid-feedback">
+            Falta completar campo!
+          </div>
+        </div>
+        <div class="col">
+          <label for="segundoNombre" class="form-label">Segundo nombre</label>
+          <input type="text" class="form-control" id="segundoNombre" value="${misDatos.segundoNombre}" aria-label="Segundo nombre">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="apellido" class="form-label">Apellido<abbr title="required"
+            aria-label="required">*</abbr></label>
+          <input type="text" class="form-control" id="apellido"  value="${misDatos.apellido}" aria-label="Apelldio" required>
+        </div>
+        <div class="col">
+          <label for="segundoApellido" class="form-label">Segundo Apellido</label>
+          <input type="text" class="form-control" id="segundoApellido"  value="${misDatos.segundoApellido}" aria-label="Segundo Apellido">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">          
+          <label for="email" class="form-label">Email<abbr title="required"
+            aria-label="required">*</abbr></label>
+          <input type="email" class="form-control" id="email" aria-label="Email" value="${misDatos.email}" required>
+        </div>           
+        <div class="col">
+          <label for="tel" class="form-label">Número de contacto</label>
+          <input type="tel" class="form-control" id="tel" value="${misDatos.tel}" aria-label="Tel">
+        </div>
+      </div>
+      <br>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit" id="guardar">Guardar cambios</button>
+      </div>
+    </div>
+  `
+  document.getElementById("formulario").innerHTML =perfilCompleto
+})

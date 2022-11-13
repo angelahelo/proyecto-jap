@@ -96,7 +96,7 @@ function showProductInfo() {
         `
         document.getElementById("pInfo").innerHTML += lipr;
 
-        
+
     }
 
 
@@ -153,7 +153,44 @@ function showProductComent() {
 };
 
 
+/// idea para desafio 3/////
+function miComentario() {
+    let miComentario = document.getElementById("tuOpinion").value;
 
+    localStorage.setItem("myComent", miComentario);
+    window.location = "product-info.html";
+};
+
+function miPuntuacion() {
+    let miPuntuacion = document.getElementById("miPuntuacion").value;
+    localStorage.setItem("miPuntuacion", miPuntuacion);
+    window.location = "product-info.html"
+}
+
+
+function showMycoment() {
+
+    showProductComent()
+    let score = localStorage.getItem("miPuntuacion") ;
+    // dateTime ver.... 
+    let myComent = `
+    <div class= "container"
+        <div class= "row align-items-start">
+        
+        <div>
+        <p><strong>Comentarios</strong></p>
+        <p><strong>${miEmail()}- </strong> ${pc[i].dateTime} - ${estrellasMarcadas(score)}</p>
+        <p>${miComentario()}</p>
+        </div>
+
+        </div>
+        </div>
+    
+    
+    `
+    document.getElementById("pComent").innerHTML += myComent
+}
+/////
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -168,6 +205,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
         }
+    });
+///// idea para desafio 3... 
+    document.getElementById("mycoment").addEventListener("click", function () {
+        showMycoment();
+
     })
 })
 

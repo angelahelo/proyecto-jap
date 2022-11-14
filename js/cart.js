@@ -252,7 +252,7 @@ document.getElementById("transBanco").addEventListener("click", function () {
 
                 }
                 if (checked1.checked) {
-                    (nTarjeta.value && codSeguridad.value && date.value) != undefined;
+                    (nTarjeta.value && codSeguridad.value && date.value) !== undefined;
 
                     document.getElementById("validarTarjeta").innerHTML = "";
                     document.getElementById("validarModal").innerHTML = "";
@@ -260,7 +260,7 @@ document.getElementById("transBanco").addEventListener("click", function () {
 
                 }
                 if (checked2.checked) {
-                    numCuenta.value = undefined;
+                    numCuenta.value == undefined;
 
                     document.getElementById("validarTrans").innerHTML = "Falta completar campo";
                     document.getElementById("validarModal").innerHTML = "Falta completar campos en forma de pago"
@@ -268,7 +268,7 @@ document.getElementById("transBanco").addEventListener("click", function () {
 
                 }
                 if (checked2.checked) {
-                    numCuenta.value != undefined;
+                    numCuenta.value !== undefined;
 
                     document.getElementById("validarTrans").innerHTML = "";
                     document.getElementById("validarModal").innerHTML = "";

@@ -239,3 +239,11 @@ input#btnBuscar {
   display: flexbox;
   margin-right: auto;
 }
+
+img#imgPerfil {
+  
+    width: 100px;
+    height: 100px;
+    float: right;
+  
+}

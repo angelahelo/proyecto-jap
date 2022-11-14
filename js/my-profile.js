@@ -2,12 +2,18 @@ let datos = {};
 
 function showMyProfile() {
 
-  
+
   let miPerfil = `
 <div class="container">
-      <h2>Perfil</h2>
       <br>
-      <br>
+      <div class="row">
+       <div class="col">
+       <h2>Perfil</h2>
+       </div>
+        <div class="col">
+         <img src="img/img_perfil.png" alt="img perfil predeterminada" id="imgPerfil">
+        </div>
+      </div>      
       <div class="row">
         <div class="col">
           <label for="nombre" class="form-label">Nombre<abbr title="required"
@@ -45,6 +51,13 @@ function showMyProfile() {
         </div>
       </div>
       <br>
+      <div class="row">
+        <div class="mb-3">
+          <label for="imagPerfil" class="form-label">Imagen de perfil</label>
+          <input class="form-control" type="file" id="imagPerfil">
+        </div>
+      </div>
+      <br>
       <div class="col-12">
         <button class="btn btn-primary" type="submit" id="guardar">Guardar cambios</button>
       </div>
@@ -52,7 +65,7 @@ function showMyProfile() {
 `
   document.getElementById("formulario").innerHTML = miPerfil
 
-  
+
 
 };
 
@@ -64,12 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   showMyProfile(); /// Muestro todos los input vacios, salvo email
 
-  
+
 
 
   ///// ACA GUARDO TODOS LOS DATOS DE LOS CAMPOS//////
-  
-  document.getElementById("guardar").addEventListener("click", function () { 
+
+  document.getElementById("guardar").addEventListener("click", function () {
     let nombre = document.getElementById("nombre").value;
     let segundoNombre = document.getElementById("segundoNombre").value;
     let apellido = document.getElementById("apellido").value;
@@ -80,20 +93,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /// construyo un objeto con los datos como atributos ... 
     datos = {
-      nombre : `${nombre}`,
-      segundoNombre : `${segundoNombre}`,
-      apellido : `${apellido}`,
-      segundoApellido : `${segundoApellido}`,
-      email : `${email}`,
+      nombre: `${nombre}`,
+      segundoNombre: `${segundoNombre}`,
+      apellido: `${apellido}`,
+      segundoApellido: `${segundoApellido}`,
+      email: `${email}`,
       tel: `${tel}`,
-    
+
 
     };
 
     //// paso los datos a string para guardarlos en localstorage
     let perfil = JSON.stringify(datos);
     localStorage.setItem("perfil", perfil);
-   
+
 
 
 
@@ -110,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Funcion boostrap 5 validaciones
   var forms = document.querySelectorAll('.needs-validation')
 
-  
+
   Array.prototype.slice.call(forms)
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -134,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /// Muestro el perfil con los datos que guarde
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function () {
 
   //// obtengo los datos del local
 
@@ -147,11 +160,17 @@ document.addEventListener("DOMContentLoaded",function(){
   console.log(perfil);
   console.log(misDatos);
 
-  let perfilCompleto =`
+  let perfilCompleto = `
   <div class="container">
-      <h2>Perfil</h2>
-      <br>
-      <br>
+   <br>
+    <div class="row">
+      <div class="col">
+        <h2>Perfil</h2>
+      </div>
+      <div class="col">
+       <img src="img/img_perfil.png" alt="img perfil predeterminada" id="imgPerfil">
+      </div>
+  </div>
       <div class="row">
         <div class="col">
           <label for="nombre" class="form-label">Nombre<abbr title="required"
@@ -189,10 +208,17 @@ document.addEventListener("DOMContentLoaded",function(){
         </div>
       </div>
       <br>
+      <div class="row">
+        <div class="mb-3">
+          <label for="imagPerfil" class="form-label">Imagen de perfil</label>
+          <input class="form-control" type="file" id="imagPerfil">
+        </div>
+      </div>
+      <br>
       <div class="col-12">
         <button class="btn btn-primary" type="submit" id="guardar">Guardar cambios</button>
       </div>
     </div>
   `
-  document.getElementById("formulario").innerHTML =perfilCompleto
+  document.getElementById("formulario").innerHTML = perfilCompleto
 })

@@ -42,7 +42,7 @@
   </nav>
   <main>
 
-    <div class="container">
+    <div class="container" id="contenedor">
       <!--EMPIEZA FORM PARA LAS VALIDACIONES-->
 
       <form id="formulario" class="needs-validation" novalidate>
@@ -57,8 +57,8 @@
           <br>
           <h2>Tipo de envio</h2>
           <br>
-          <div class="form-check input-group has-validation">
-            <input class="form-check-input" type="radio" name="tipoEnvio" id="envio1" checked required>
+          <div class="form-check input-group has-validation" id="tipoEnvio">
+            <input class="form-check-input" type="radio" name="tipoEnvio" id="envio1" required>
             <label class="form-check-label" for="envio1">
               Premium 2 a 5 días (15%)
             </label>
@@ -177,13 +177,12 @@
           </div>
 
 
-
         </div>
         <div id="formaDePago">
           <div class="input-group has-validation">
             <p>Debe elegir la forma de pago <abbr title="required" aria-label="required" required>*</abbr>
-              <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                id="botonPago" >
+              <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal" data-bs-target="#modalPago"
+                id="botonPago">
                 Seleccionar
 
               </button>
@@ -200,81 +199,79 @@
       </form>
 
       <!-- MODAL -->
-      <div class="modal fade needs-validation" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+      <div class="modal fade needs-validation-modal" id="modalPago" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="formaDePago" aria-hidden="true" novalidate>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="formaDePago">Forma de pago</h5>
-              
+              <h5 class="modal-title">Forma de pago</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="form-check ">
+              <!--Radio, para completar solo campos seleccionado-->
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="tarjetaCred" required
+                onchange="valFormaPago()">
+              <label class="form-check-label has-validation" for="tarjetaCred">
+                Tarjeta de crédito
+              </label>
+              <p id="validarTarjeta"></p>
+              <tbody>
+                <tr>
+                  <th>
+                    <div class="mb-3 ">
+                      <label for="nTarjeta" class="form-label has-validation">Número de tarjeta</label>
+                      <input type="number" id="nTarjeta" class="form-control" name="cardnumber" required>
+
+
+                    </div>
+                  </th>
+                  <th>
+                    <div class="mb-3">
+                      <label for="codSeguridad" class="form-label has-validation">Código de seguridad</label>
+                      <input type="number" class="form-control" id="codSeguridad" size="6" required>
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="mb-3">
+                      <label for="date" class="form-label has-validation">Vencimiento MM/AA</label>
+                      <input type="month" id="date" name="expiration" required>
+                    </div>
+                  </td>
+                  <td></td>
+                </tr>
+
+              </tbody>
+
             </div>
 
 
-            
-              <div class="form-check ">
-                <!--Radio, para completar solo campos seleccionado-->
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="tarjetaCred" required>
-                <label class="form-check-label" for="tarjetaCred">
-                  Tarjeta de crédito
-                </label>
-                <p id="validarTarjeta"></p>
-                <tbody>
-                  <tr>
-                    <th>
-                      <div class="mb-3 ">
-                        <label for="nTarjeta" class="form-label">Número de tarjeta</label>
-                        <input type="number" id="nTarjeta" class="form-control" name="cardnumber" required>
-                        
-
-                      </div>
-                    </th>
-                    <th>
-                      <div class="mb-3">
-                        <label for="codSeguridad" class="form-label">Código de seguridad</label>
-                        <input type="number" class="form-control" id="codSeguridad" size="6" required>
-                      </div>
-                    </th>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div class="mb-3">
-                        <label for="date" class="form-label">Vencimiento MM/AA</label>
-                        <input type="month" id="date" name="expiration" required>
-                      </div>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                </tbody>
-                
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="transBanco"
+                onchange="valFormaPago()">
+              <label class="form-check-label has-validation" for="transBanco">
+                Transferencia bancaria
+              </label>
+              <p id="validarTrans"></p>
+              <div>
+                <label for="numCuenta" class="form-label has-validation">Número de cuenta</label>
+                <input type="number" class="form-control" id="numCuenta" size="20" required>
               </div>
-
-
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="transBanco">
-                <label class="form-check-label" for="transBanco">
-                  Transferencia bancaria
-                </label>
-                <p id="validarTrans"></p>
-                <div>
-                  <label for="numCuenta" class="form-label">Número de cuenta</label>
-                  <input type="number" class="form-control" id="numCuenta" size="20" required>
-                </div>
-              </div>
+            </div>
 
 
 
-              <div class="modal-footer">
-                <p id="validarPago"></p>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cerrar">Cerrar</button>
+            <div class="modal-footer">
+              <p id="validarPago"></p>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  id="cerrar">Cerrar</button>
 
-              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
 
 

@@ -62,7 +62,7 @@ function acceso() {
 function miEmail() {
   let email = localStorage.getItem("usuario");
   return email
- 
+
 }
 
 
